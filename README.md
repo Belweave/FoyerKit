@@ -410,12 +410,15 @@ The package also has Xcode previews in `Sources/FoyerKit/API/FoyerPreviews.swift
 
 ## Building and testing
 
-The package includes a Metal shader, which SwiftPM and Xcode both compile into the package's resource bundle.
+The package includes a Metal shader, which Xcode compiles into the package's resource bundle. Command-line `swift test` builds everything else but not the shader, so `ResourceTests.sceneShaderIsPackaged` only passes under Xcode; CI runs the tests with `xcodebuild`.
 
 ```sh
 swift build
-swift test -c release -Xswiftc -enable-testing
+xcodebuild test -scheme FoyerKit -destination 'platform=macOS' -configuration Release ENABLE_TESTABILITY=YES
+swift test -c release -Xswiftc -enable-testing   # quicker loop; the shader test fails here
 ```
+
+The `Demo screenshots` workflow builds the demo app for the iOS Simulator and captures every page; run it locally with `xcrun simctl launch booted com.example.FoyerKitDemo -FoyerDemoPage symbols` on a Debug build.
 
 The tests play every page after every other page, random welcomes, every graph shape and scene, any number of falling nodes, and resized windows, frame by frame, and fail on any frame that jumps. They take several minutes; run them in release.
 

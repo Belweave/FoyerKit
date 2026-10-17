@@ -28,7 +28,7 @@ jobs:
       # and text have settled.
       SETTLE: 16
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Select the newest Xcode 26
         run: |
@@ -111,18 +111,22 @@ jobs:
 
       - name: Record a clip of the intro
         run: |
+          # Open on the demo's settings so the clip never shows the home
+          # screen, then relaunch straight into the intro while recording.
+          xcrun simctl launch "$UDID" "$BUNDLE_ID"
+          sleep 4
           xcrun simctl io "$UDID" recordVideo --codec h264 --force "$OUT/intro.mp4" &
           REC=$!
           sleep 2
-          xcrun simctl launch "$UDID" "$BUNDLE_ID" -FoyerDemoPage all
-          sleep 20
+          xcrun simctl launch --terminate-running-process "$UDID" "$BUNDLE_ID" -FoyerDemoPage all
+          sleep 26
           kill -INT "$REC"
           wait "$REC" || true
           ls -la "$OUT"
 
       - name: Upload screenshots and video
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: foyerkit-demo-captures
           path: captures/
@@ -130,7 +134,7 @@ jobs:
 
       - name: Upload the build log
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: xcodebuild-log
           path: xcodebuild.log

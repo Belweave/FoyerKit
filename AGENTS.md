@@ -21,7 +21,8 @@ FoyerKit is a Swift package: a first-launch intro for SwiftUI apps on iOS 26+ an
 
 ```sh
 swift build                                          # build the package
-swift test -c release -Xswiftc -enable-testing       # all tests; several minutes, run them in release
+xcodebuild test -scheme FoyerKit -destination 'platform=macOS' -configuration Release ENABLE_TESTABILITY=YES   # all tests, shader included; what CI runs
+swift test -c release -Xswiftc -enable-testing       # all tests except the Metal shader one (SwiftPM's CLI does not compile .metal); several minutes, run them in release
 swift test -c release -Xswiftc -enable-testing --filter GraphLayoutTests   # one suite
 xcodebuild docbuild -scheme FoyerKit -destination 'generic/platform=macOS'   # docs; must have no warnings
 xcodebuild build -project Examples/FoyerKitDemo/FoyerKitDemo.xcodeproj -scheme FoyerKitDemo -destination 'platform=macOS' CODE_SIGNING_ALLOWED=NO
