@@ -1,0 +1,27 @@
+@Tutorials(name: "FoyerKit") {
+    @Intro(title: "Meet FoyerKit") {
+        Give your app a first-launch intro in Liquid Glass: your mark, a welcome that tells your app's story a page at a time, and an ending in your own words.
+    }
+
+    @Chapter(name: "Essentials") {
+        Add an intro to an app, tell its story with pages, and make the ending your own.
+
+        @TutorialReference(tutorial: "doc:AddingAnIntro")
+    }
+
+    @Resources {
+        Learn more about each part of the intro.
+
+        @Documentation(destination: "https://github.com/Belweave/FoyerKit") {
+            The repository, with the demo app that tries every option.
+
+            - [README](https://github.com/Belweave/FoyerKit#readme)
+        }
+
+        @SampleCode(destination: "https://github.com/Belweave/FoyerKit/tree/main/Examples/FoyerKitDemo") {
+            The demo app opens on a settings screen and writes out the code for the intro you set up.
+
+            - [FoyerKitDemo](https://github.com/Belweave/FoyerKit/tree/main/Examples/FoyerKitDemo)
+        }
+    }
+}

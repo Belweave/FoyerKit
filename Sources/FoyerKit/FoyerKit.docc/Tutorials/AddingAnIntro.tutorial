@@ -1,0 +1,93 @@
+@Tutorial(time: 15) {
+    @Intro(title: "Adding an Intro to Your App") {
+        Add FoyerKit to an app, give it a welcome of several pages, choose the words of its ending, and play it again from a button.
+    }
+
+    @Section(title: "Add an intro") {
+        @ContentAndMedia {
+            An intro is one modifier on your window's root view. With just your app's name and one page, it plays the launch and a welcome of one page.
+        }
+
+        @Steps {
+            @Step {
+                Add FoyerKit to your app. In Xcode, choose File › Add Package Dependencies and enter the repository URL. In a package, add it to the dependencies.
+
+                @Code(name: "Package.swift", file: "tutorial-package.swift")
+            }
+
+            @Step {
+                In your app's main file, import FoyerKit.
+
+                @Code(name: "OrbitApp.swift", file: "tutorial-app-01.swift")
+            }
+
+            @Step {
+                Add the `foyer(appName:mark:pages:finale:)` modifier to the root view, with your app's name and a greeting page.
+
+                The launch plays once per process, and the welcome plays on the first launch.
+
+                @Code(name: "OrbitApp.swift", file: "tutorial-app-02.swift")
+            }
+        }
+    }
+
+    @Section(title: "Tell your story with pages") {
+        @ContentAndMedia {
+            Pages come in any order. Pictures made to follow one another carry straight on; any other two meet in a drop of glass.
+        }
+
+        @Steps {
+            @Step {
+                Add a mark page, and a symbols page with symbols for your app.
+
+                @Code(name: "OrbitApp.swift", file: "tutorial-app-03.swift")
+            }
+
+            @Step {
+                Add a scene page. Choose its shape, colour, and motion with `FoyerScene`.
+
+                @Code(name: "OrbitApp.swift", file: "tutorial-app-04.swift")
+            }
+
+            @Step {
+                Add a graph of your own nodes, and a physics page: right after a graph, the graph's own nodes fall.
+
+                @Code(name: "OrbitApp.swift", file: "tutorial-app-05.swift")
+            }
+        }
+    }
+
+    @Section(title: "Make the ending your own") {
+        @ContentAndMedia {
+            The last page asks to begin. Its button plays the ending: a few words in glass, then the mark fills with colour and dissolves over your app.
+        }
+
+        @Steps {
+            @Step {
+                Add an icon page, and choose the words of the ending with `finale`. Pass an empty array for no words.
+
+                @Code(name: "OrbitApp.swift", file: "tutorial-app-06.swift")
+            }
+        }
+    }
+
+    @Section(title: "Play it again") {
+        @ContentAndMedia {
+            Let people see the intro again whenever they ask, with a binding.
+        }
+
+        @Steps {
+            @Step {
+                Start from your content view.
+
+                @Code(name: "ContentView.swift", file: "tutorial-content-01.swift")
+            }
+
+            @Step {
+                Add a Boolean state and a button that sets it, and give the view `foyer(_:isPresented:)`. The intro plays when the binding becomes true, and sets it back to false when it ends.
+
+                @Code(name: "ContentView.swift", file: "tutorial-content-02.swift")
+            }
+        }
+    }
+}

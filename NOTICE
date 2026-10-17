@@ -1,0 +1,42 @@
+FoyerKit
+Copyright (c) 2026 belweave (Preetham Kyanam)
+
+Portions derived from GlassIntroKit, licensed under Apache 2.0.
+
+Modified files are marked with a "Modified by belweave, 2026" header, and
+the changes from the original are described in CHANGES.md.
+
+The attribution notices of the original work follow, reproduced from its
+NOTICE file. A notice about a demo picture that is no longer included has
+been left out.
+
+========================================================================
+GlassIntroKit
+Copyright (c) 2026 Jiaxu Li
+
+This product is licensed under the Apache License, Version 2.0.
+See the LICENSE file for the full text.
+
+Original works
+--------------
+The following are the author's own works and are included under the same
+license:
+
+  - The "hello" handwriting stroke.
+  - The default mark design.
+
+SF Symbols
+----------
+SF Symbols are Apple's and are subject to Apple's terms. GlassIntroKit uses
+them through the system and does not redistribute them.
+
+Device frames
+-------------
+The iPhone and MacBook Pro frames around the screenshots and videos in the
+documentation come from Apple Design Resources (developer.apple.com/design/
+resources). They are Apple's and are used under Apple's license. The frame
+files themselves are not included in this repository.
+
+Apple, iPhone, MacBook Pro, and macOS are trademarks of Apple Inc.,
+registered in the U.S. and other countries and regions.
+========================================================================
