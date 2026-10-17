@@ -130,11 +130,11 @@ private struct WordProbe: IntroMotion {
     @Test func detailIsOpenAtRestAndClosedBefore() {
         for motion in [fromWord, fromSeed] {
             let center = canvas.graphicCenter
-            // Checked by the even-odd rule: on macOS 26, `contains` with the
-            // non-zero rule reports points inside a hole made by
+            // Hit-tested with Core Graphics: on macOS 26, SwiftUI's
+            // `Path.contains` reports a point inside a hole cut with
             // `subtracting` as filled, although the hole draws correctly.
-            #expect(!outline(motion, at: motion.settleTime).contains(center, eoFill: true))
-            #expect(!outline(motion, at: motion.settleTime + 3).contains(center, eoFill: true))
+            #expect(!outline(motion, at: motion.settleTime).cgPath.contains(center))
+            #expect(!outline(motion, at: motion.settleTime + 3).cgPath.contains(center))
         }
         #expect(outline(fromSeed, at: 0).contains(canvas.graphicCenter))
         #expect(outline(fromWord, at: MarkTurn.apertureStart).contains(canvas.graphicCenter))

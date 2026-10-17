@@ -13,6 +13,18 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  quick:
+    name: Quick check (path tests)
+    runs-on: macos-26
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+      - run: sudo xcode-select -s "$(ls -d /Applications/Xcode_26*.app | grep -viE 'beta|release_candidate' | sort -V | tail -1)/Contents/Developer"
+      - run: |
+          set -o pipefail
+          xcodebuild test -scheme FoyerKit -destination 'platform=macOS' -configuration Release ENABLE_TESTABILITY=YES \
+            -only-testing:FoyerKitTests/MarkMotionTests -only-testing:FoyerKitTests/SymbolTracerTests | tail -n 80
+
   package:
     name: Build and test (macOS 26)
     runs-on: macos-26
