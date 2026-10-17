@@ -43,6 +43,15 @@ struct ContentView: View {
         .frame(minWidth: 640, minHeight: 520)
         #endif
         .foyer(settings.intro, isPresented: $showsIntro)
+        #if DEBUG
+        .onAppear {
+            // Automated screenshots only; see DemoAutomation.
+            if DemoAutomation.apply(to: settings) {
+                showsApp = true
+                showsIntro = true
+            }
+        }
+        #endif
     }
 }
 
