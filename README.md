@@ -12,6 +12,8 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-blue" alt="License: Apache 2.0"></a>
 </p>
 
+<img src="docs/images/hero.png" width="100%" alt="FoyerKit: Liquid Glass intro screens for SwiftUI, showing five intro pages from the demo app">
+
 <p>A <a href="https://github.com/Belweave">belweave</a> project.</p>
 
 </div>
