@@ -57,7 +57,8 @@ import Testing
         let plain = mark.path(in: rect, apertureOpening: 1, symbolOutline: nil)
         let cut = mark.path(in: rect, apertureOpening: 1, symbolOutline: star)
         #expect(plain.contains(CGPoint(x: 100, y: 100)))
-        #expect(!cut.contains(CGPoint(x: 100, y: 100)))
+        // Core Graphics hit-testing: see MarkMotionTests.detailIsOpenAtRestAndClosedBefore.
+        #expect(!cut.cgPath.contains(CGPoint(x: 100, y: 100)))
         #expect(cut.contains(CGPoint(x: 100, y: 30)))
     }
 }
